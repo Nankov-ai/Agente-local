@@ -1,0 +1,23 @@
+# Faturas reais (documentos sensíveis)
+Faturas/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+env/
+
+# Windows
+*.lnk
+Thumbs.db
+Desktop.ini
+
+# Streamlit
+.streamlit/secrets.toml

@@ -35,36 +35,36 @@
     /* ── NAV ── */
     nav {
       position: sticky; top: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: .9rem clamp(1.25rem, 5vw, 3rem);
       background: rgba(14,14,14,.92);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
     }
-    .nav-brand { display: flex; align-items: center; gap: .75rem; }
-    .nav-logo {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 2.5px;
-      width: 22px; height: 22px;
+    .nav-inner {
+      max-width: 1100px; margin: 0 auto;
+      padding: 0 clamp(1.5rem, 5vw, 3rem);
+      height: 56px;
+      display: flex; align-items: center; justify-content: space-between;
     }
-    .nav-logo span {
-      border-radius: 2px;
-    }
-    .nav-logo .tl { background: var(--paper); }
-    .nav-logo .tr { border: 1px solid rgba(245,244,240,.35); }
-    .nav-logo .bl { border: 1px solid rgba(245,244,240,.35); }
-    .nav-logo .br { background: var(--signal); }
-    .nav-wordmark { font-size: .75rem; letter-spacing: .12em; font-weight: 500; color: var(--paper); }
-    .nav-product { font-size: .75rem; letter-spacing: .12em; color: var(--signal); margin-left: .1rem; }
+    .nav-brand { display: flex; align-items: center; gap: 1rem; }
+    .nav-logo { font-family: 'DM Mono', monospace; font-weight: 500; font-size: 1rem; letter-spacing: .06em; color: var(--paper); }
+    .nav-logo span { color: var(--signal); }
+    .nav-by { font-size: .65rem; color: var(--stone); letter-spacing: .06em; border-left: 1px solid var(--border2); padding-left: 1rem; white-space: nowrap; }
+    .nav-by a { color: var(--signal); text-decoration: none; }
     .nav-right { display: flex; align-items: center; gap: 1rem; }
-    .nav-contact {
-      font-size: .7rem; letter-spacing: .09em; font-weight: 500;
+    .nav-cta {
+      font-size: .75rem; letter-spacing: .08em; font-weight: 500;
       background: var(--signal); color: var(--ink);
-      padding: .45rem 1.1rem; border: none; cursor: pointer;
-      font-family: 'DM Mono', monospace;
-      transition: opacity .2s;
-      position: relative;
+      padding: .45rem 1.2rem; border: none; cursor: pointer;
+      font-family: 'DM Mono', monospace; white-space: nowrap;
+      transition: opacity .2s; position: relative;
     }
-    .nav-contact:hover { opacity: .85; }
+    .nav-cta:hover { opacity: .85; }
+    @media (max-width: 520px) {
+      .nav-by { display: none; }
+    }
+    @media (max-width: 380px) {
+      .nav-cta { font-size: .62rem; padding: .4rem .75rem; letter-spacing: .05em; }
+    }
 
     /* ── LANG SWITCH ── */
     .lang-en { display: none; }
@@ -332,29 +332,31 @@
       .btn-primary, .btn-ghost { text-align: center; }
       footer { flex-direction: column; align-items: flex-start; }
     }
+    @media (max-width: 480px) {
+      .nav-wordmark { display: none; }
+    }
   </style>
 </head>
 <body>
 
 <!-- ── NAV ── -->
 <nav>
-  <a class="nav-brand" href="https://nankov-ai.github.io" rel="noopener noreferrer">
-    <div class="nav-logo">
-      <span class="tl"></span><span class="tr"></span>
-      <span class="bl"></span><span class="br"></span>
+  <div class="nav-inner">
+    <div class="nav-brand">
+      <span class="nav-logo">Fatu<span>rix</span></span>
+      <span class="nav-by">by <a href="https://nodeflow.pt" target="_blank" rel="noopener noreferrer">Nodeflow</a></span>
     </div>
-    <span class="nav-wordmark">Nodeflow</span>
-    <span class="nav-product">· Faturix</span>
-  </a>
-  <div class="nav-right">
-    <div class="lang-switch">
-      <button class="lang-btn active" data-lang="pt">PT</button>
-      <button class="lang-btn" data-lang="en">EN</button>
-    </div>
-    <div style="position:relative;display:inline-block;">
-      <button class="nav-contact global-contact-btn">
-        <span class="lang-pt">Fale connosco</span><span class="lang-en">Contact us</span>
-      </button>
+    <div class="nav-right">
+      <div class="lang-switch">
+        <button class="lang-btn active" data-lang="pt">PT</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+      </div>
+      <div style="position:relative;display:inline-block;">
+        <button class="nav-cta global-contact-btn">
+          <span class="lang-pt">Fale connosco</span><span class="lang-en">Contact us</span>
+        </button>
+        <div class="email-picker" style="bottom:calc(100% + 6px);top:auto;right:0;left:auto;"></div>
+      </div>
     </div>
   </div>
 </nav>
@@ -616,7 +618,7 @@
     <span class="format-tag highlight"><span class="lang-pt">Encomenda</span><span class="lang-en">Purchase Order</span></span>
     <span class="format-tag"><span class="lang-pt">Fatura ES (FACTURA)</span><span class="lang-en">ES Invoice (FACTURA)</span></span>
     <span class="format-tag"><span class="lang-pt">Fatura ES (IVA 0%)</span><span class="lang-en">ES Invoice (VAT 0%)</span></span>
-    <span class="format-tag">Fatura EU Intra-UE</span>
+    <span class="format-tag"><span class="lang-pt">Fatura EU Intra-UE</span><span class="lang-en">EU Intra-EU Invoice</span></span>
     <span class="format-tag"><span class="lang-pt">Fatura UK (Invoice nbr.)</span><span class="lang-en">UK Invoice (Invoice nbr.)</span></span>
     <span class="format-tag"><span class="lang-pt">Fatura USD</span><span class="lang-en">USD Invoice</span></span>
     <span class="format-tag"><span class="lang-pt">Múltiplas taxas IVA</span><span class="lang-en">Multiple VAT rates</span></span>
@@ -625,8 +627,8 @@
     <span class="format-tag"><span class="lang-pt">Multi-armazém por linha</span><span class="lang-en">Multi-warehouse per line</span></span>
     <span class="format-tag"><span class="lang-pt">Multi-fornecedor por linha</span><span class="lang-en">Multi-supplier per line</span></span>
     <span class="format-tag"><span class="lang-pt">OCR PDF complexo</span><span class="lang-en">Complex PDF OCR</span></span>
-    <span class="format-tag">PDF digitalizado · foto</span>
-    <span class="format-tag">QR Code AT vetorial</span>
+    <span class="format-tag"><span class="lang-pt">PDF digitalizado · foto</span><span class="lang-en">Scanned PDF · photo</span></span>
+    <span class="format-tag"><span class="lang-pt">QR Code AT vetorial</span><span class="lang-en">AT vectorial QR Code</span></span>
   </div>
 </section>
 
